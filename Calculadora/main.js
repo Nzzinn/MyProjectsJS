@@ -2,7 +2,7 @@ const criaCalculadora = () => {
     return{
         display: document.querySelector('.display'),
 
-        incia(){
+        inicia(){
             this.cliqueBotao();
             this.apertaEnter();
         },
@@ -71,4 +71,4 @@ const criaCalculadora = () => {
 }
 
 const calculadora = criaCalculadora();
-calculadora.incia();
+calculadora.inicia();
