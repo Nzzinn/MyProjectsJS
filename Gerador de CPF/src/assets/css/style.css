@@ -1,0 +1,34 @@
+*{
+    background-color: rgb(13, 10, 44);
+}
+
+.desc{
+    color: coral;
+    text-align: center;
+    margin-top: 170px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container{
+    background-color: whitesmoke;
+    margin: 0 auto;
+    height: 200px;
+    width: 30%;
+    margin-top: 4px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.cpf-gerado{
+    background-color: whitesmoke;
+    font-size: 40px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h1{
+    background-color: whitesmoke;
+    border-radius: 10px;
+    font-size: 60px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
