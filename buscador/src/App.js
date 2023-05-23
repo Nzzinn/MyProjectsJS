@@ -1,18 +1,20 @@
 import {useState} from 'react';
-import {FiSearch} from 'react-icons/fi';
+import {FiSearch, FiLoader} from 'react-icons/fi';
 import './styles.css';
 import api from './services/api';
+import { useEffect } from 'react';
 
 function App() {
-
   const [input, setInput] = useState('');
   const [cep, setCep] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSearch(){
+    setIsLoading(true);
+
     if(input === ''){
-      alert('Preencha com algum CEP!');
-      return;
-    }
+      alert('Preencha com algum CEP!')
+    } 
 
     try{  
       const response = await api.get(`${input}/json`);
@@ -21,7 +23,23 @@ function App() {
     }catch{
       alert('OPS, algo deu errado!');
       setInput('');
+    } finally {
+      setTimeout(() => setIsLoading(false), 2000);
     }
+  }
+
+ useEffect(() => {
+    if(input.length === 8){
+      const bouncer = setTimeout(() => {
+        handleSearch();
+      }, 1000);
+
+      return () => clearTimeout(bouncer);
+    }
+  }, [input]);
+
+  const RenderSearch = () => {
+    return isLoading ? (<FiLoader size={25} color='whitesmoke' />) : (<FiSearch size={25} color='whitesmoke' />) 
   }
 
   return (
@@ -37,11 +55,11 @@ function App() {
         />
 
         <button className="buttonSearch" onClick={handleSearch}>
-          <FiSearch size={25} color='whitesmoke'/>
+          <RenderSearch />
         </button>
       </div>
 
-      {Object.keys(cep).length > 0 && (
+      {Object.keys(cep).length > 0 && !isLoading &&(
         <main className='main'>
           <h2>CEP: {cep.cep}</h2>
 
